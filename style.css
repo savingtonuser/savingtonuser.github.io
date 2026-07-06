@@ -1060,101 +1060,36 @@ label {
 
 }
 /* =========================
-   RESPONSIVE WEBSITE HEADER
+   LOGO HEADER
 ========================= */
 
 .site-header {
     width: 100%;
-    background-color: #ffffff;
-    padding: 20px 30px;
+    padding: 15px 20px;
     box-sizing: border-box;
-
-    border-bottom: 1px solid #e5e5e5;
-
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
 }
-
-
-/* Header content container */
 
 .header-container {
     width: 100%;
     max-width: 1400px;
-
     margin: 0 auto;
 
     display: flex;
+    justify-content: center;
     align-items: center;
-
-    gap: 25px;
 }
-
-
-/* Company logo */
 
 .company-logo {
-    width: 180px;
-    max-width: 100%;
+    display: block;
 
-    height: 80px;
+    width: auto;
+    max-width: min(100%, 500px);
+
+    height: auto;
+    max-height: 120px;
 
     object-fit: contain;
-
-    flex-shrink: 0;
-}
-
-
-/* Header text */
-
-.header-text {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-}
-
-
-.header-text h1 {
-    margin: 0;
-
-    font-size: 32px;
-    font-weight: 700;
-
-    color: #222222;
-
-    line-height: 1.2;
-}
-
-
-.header-text p {
-    margin: 6px 0 0;
-
-    font-size: 16px;
-
-    color: #666666;
-}
-
-
-/* =========================
-   LAPTOP
-========================= */
-
-@media (max-width: 1200px) {
-
-    .site-header {
-        padding: 18px 25px;
-    }
-
-    .company-logo {
-        width: 150px;
-        height: 70px;
-    }
-
-    .header-text h1 {
-        font-size: 28px;
-    }
-
 }
 
 
@@ -1165,24 +1100,14 @@ label {
 @media (max-width: 768px) {
 
     .site-header {
-        padding: 16px 20px;
-    }
-
-    .header-container {
-        gap: 18px;
+        padding: 12px 16px;
     }
 
     .company-logo {
-        width: 120px;
-        height: 60px;
-    }
-
-    .header-text h1 {
-        font-size: 24px;
-    }
-
-    .header-text p {
-        font-size: 14px;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        max-height: 100px;
     }
 
 }
@@ -1195,30 +1120,35 @@ label {
 @media (max-width: 480px) {
 
     .site-header {
-        padding: 15px;
+        padding: 10px 12px;
     }
 
     .header-container {
-        flex-direction: column;
-
-        text-align: center;
-
-        gap: 10px;
+        width: 100%;
     }
 
     .company-logo {
-        width: 130px;
+        width: 100%;
+        max-width: 280px;
+
         height: auto;
-        max-height: 65px;
+        max-height: 80px;
+
+        object-fit: contain;
     }
 
-    .header-text h1 {
-        font-size: 22px;
-    }
+}
 
-    .header-text p {
-        font-size: 13px;
-        line-height: 1.4;
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+    .company-logo {
+        max-width: 240px;
+        max-height: 70px;
     }
 
 }
