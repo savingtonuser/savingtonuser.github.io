@@ -917,3 +917,145 @@ label {
             auto !important;
     }
 }
+/* =====================================================
+   RESPONSIVE SELECTION GRID
+===================================================== */
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    width: 100%;
+}
+
+
+/* Remove unnecessary spacing from final dropdown */
+
+.selection-grid .form-group:last-child {
+    margin-bottom: 26px;
+}
+
+
+/* =====================================================
+   LARGE LAPTOPS AND DESKTOPS
+===================================================== */
+
+@media (min-width: 1000px) {
+
+    body {
+        align-items: center;
+    }
+
+    .container {
+        max-width: 1100px;
+
+        padding:
+            48px
+            46px;
+    }
+
+    .selection-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 22px;
+
+        align-items: start;
+    }
+
+    .selection-grid .form-group {
+        margin-bottom: 28px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .description {
+        max-width: 600px;
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOPS AND TABLETS
+===================================================== */
+
+@media (min-width: 701px) and (max-width: 999px) {
+
+    .container {
+        max-width: 760px;
+    }
+
+    .selection-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            0
+            20px;
+    }
+
+    .selection-grid .form-group:last-child {
+        grid-column:
+            1 / -1;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .selection-grid {
+        gap: 0;
+    }
+
+    .dropdown-button {
+        width: 100%;
+    }
+
+    .dropdown-button > span:first-child {
+        min-width: 0;
+    }
+
+    .dropdown-menu {
+        left: 0;
+        right: 0;
+
+        width: 100%;
+    }
+
+    .selected-info {
+        padding:
+            15px
+            14px;
+    }
+
+    .selected-info p {
+        overflow-wrap: anywhere;
+    }
+
+}
