@@ -1,0 +1,919 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    --text-dark: #0f172a;
+    --text: #334155;
+    --text-light: #64748b;
+
+    --border: #cbd5e1;
+    --border-light: #e2e8f0;
+
+    --white: #ffffff;
+    --background: #f1f5f9;
+
+    --success: #15803d;
+    --error: #dc2626;
+}
+
+
+html {
+    font-size: 16px;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fafc,
+            #eef4ff
+        );
+
+    color: var(--text);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container {
+    position: relative;
+
+    width: 100%;
+    max-width: 580px;
+
+    background: var(--white);
+
+    padding: 44px 42px;
+
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+
+    box-shadow:
+        0 4px 10px rgba(15, 23, 42, 0.05),
+        0 18px 45px rgba(15, 23, 42, 0.12);
+
+    overflow: visible;
+
+    animation: containerEnter 0.4s ease;
+}
+
+
+/* Blue line at top */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    border-radius: 20px 20px 0 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1d4ed8,
+            #3b82f6,
+            #2563eb
+        );
+}
+
+
+@keyframes containerEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+h1 {
+    margin-bottom: 12px;
+
+    color: var(--text-dark);
+
+    font-size: 30px;
+    font-weight: 700;
+
+    letter-spacing: -0.6px;
+
+    text-align: center;
+}
+
+
+.description {
+    max-width: 450px;
+
+    margin:
+        0 auto
+        36px;
+
+    color: var(--text-light);
+
+    font-size: 15px;
+    line-height: 1.65;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group {
+    position: relative;
+
+    margin-bottom: 26px;
+}
+
+
+label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--text-dark);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CUSTOM DROPDOWN
+===================================================== */
+
+.custom-dropdown {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* Main dropdown button */
+
+.dropdown-button {
+    width: 100%;
+    min-height: 52px;
+
+    padding:
+        13px
+        16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    color: var(--text-dark);
+    background: var(--white);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 10px;
+
+    box-shadow: none;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.dropdown-button:hover {
+    background: #fafcff;
+
+    border-color: #94a3b8;
+}
+
+
+.dropdown-button:focus {
+    outline: none;
+}
+
+
+.custom-dropdown.open
+.dropdown-button {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37, 99, 235, 0.10);
+}
+
+
+/* Selected text */
+
+.dropdown-button > span:first-child {
+    flex: 1;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* Dropdown arrow */
+
+.arrow {
+    flex-shrink: 0;
+
+    color: var(--text-light);
+
+    font-size: 18px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.custom-dropdown.open
+.arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =====================================================
+   DROPDOWN MENU
+===================================================== */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 7px);
+    left: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    width: 100%;
+
+    padding: 8px;
+
+    background: var(--white);
+
+    border:
+        1px solid
+        var(--border-light);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 20px
+        rgba(15, 23, 42, 0.08),
+        0 20px 40px
+        rgba(15, 23, 42, 0.12);
+
+    transform-origin: top;
+
+    animation:
+        dropdownEnter
+        0.18s ease;
+}
+
+
+.custom-dropdown.open
+.dropdown-menu {
+    display: block;
+}
+
+
+@keyframes dropdownEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-5px)
+            scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   SEARCH BAR INSIDE DROPDOWN
+===================================================== */
+
+.dropdown-search-box {
+    position: relative;
+
+    margin-bottom: 7px;
+}
+
+
+.dropdown-search-box input {
+    width: 100%;
+    height: 44px;
+
+    padding:
+        10px
+        14px
+        10px
+        40px;
+
+    color: var(--text-dark);
+    background: #f8fafc;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.dropdown-search-box input:hover {
+    border-color: #94a3b8;
+}
+
+
+.dropdown-search-box input:focus {
+    background: var(--white);
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.10);
+}
+
+
+.dropdown-search-box input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* Search icon */
+
+.search-icon {
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    z-index: 2;
+
+    transform:
+        translateY(-50%);
+
+    color: var(--text-light);
+
+    font-size: 18px;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   DROPDOWN OPTIONS
+===================================================== */
+
+.dropdown-options {
+    max-height: 230px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding-right: 2px;
+
+    scroll-behavior: smooth;
+}
+
+
+.dropdown-option {
+    width: 100%;
+
+    padding:
+        11px
+        12px;
+
+    color: var(--text);
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    line-height: 1.45;
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease,
+        background-color 0.15s ease;
+}
+
+
+.dropdown-option:hover {
+    color: var(--primary-dark);
+
+    background: var(--primary-light);
+}
+
+
+.dropdown-option.selected {
+    color: var(--primary-dark);
+
+    background: #e8f0ff;
+
+    font-weight: 600;
+}
+
+
+/* No results */
+
+.no-results {
+    padding:
+        20px
+        12px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   DROPDOWN SCROLLBAR
+===================================================== */
+
+.dropdown-options::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.dropdown-options::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.dropdown-options::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+
+.dropdown-options::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* Firefox scrollbar */
+
+.dropdown-options {
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #cbd5e1
+        transparent;
+}
+
+
+/* =====================================================
+   SELECTED INFORMATION
+===================================================== */
+
+.selected-info {
+    display: none;
+
+    margin-bottom: 22px;
+
+    padding:
+        17px
+        18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #eff6ff
+        );
+
+    border:
+        1px solid
+        #bfdbfe;
+
+    border-radius: 10px;
+
+    animation:
+        infoEnter
+        0.25s ease;
+}
+
+
+@keyframes infoEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.selected-info p {
+    display: flex;
+
+    gap: 8px;
+
+    color: var(--text);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.selected-info p + p {
+    margin-top: 6px;
+}
+
+
+.selected-info strong {
+    min-width: 70px;
+
+    color: var(--text-dark);
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   DOWNLOAD BUTTON
+===================================================== */
+
+#downloadButton {
+    width: 100%;
+    min-height: 52px;
+
+    padding:
+        14px
+        20px;
+
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d6ee8
+        );
+
+    border: none;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 8px
+        rgba(37, 99, 235, 0.25);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+#downloadButton:hover:not(:disabled) {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 7px 15px
+        rgba(37, 99, 235, 0.28);
+}
+
+
+#downloadButton:active:not(:disabled) {
+    transform:
+        translateY(0);
+}
+
+
+#downloadButton:focus-visible {
+    outline:
+        3px solid
+        rgba(37, 99, 235, 0.25);
+
+    outline-offset: 3px;
+}
+
+
+#downloadButton:disabled {
+    color: #f8fafc;
+
+    background: #94a3b8;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    opacity: 0.75;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+#message {
+    min-height: 20px;
+
+    margin-top: 16px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+#message.success,
+.success {
+    color: var(--success);
+}
+
+
+#message.error,
+.error {
+    color: var(--error);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        align-items: flex-start;
+
+        padding:
+            20px
+            14px;
+    }
+
+
+    .container {
+        padding:
+            36px
+            26px;
+
+        border-radius: 16px;
+    }
+
+
+    h1 {
+        font-size: 26px;
+    }
+
+
+    .description {
+        margin-bottom: 30px;
+
+        font-size: 14px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding:
+            12px
+            10px;
+    }
+
+
+    .container {
+        padding:
+            30px
+            18px;
+
+        border-radius: 14px;
+    }
+
+
+    .container::before {
+        border-radius:
+            14px
+            14px
+            0
+            0;
+    }
+
+
+    h1 {
+        font-size: 23px;
+
+        letter-spacing: -0.3px;
+    }
+
+
+    .description {
+        margin-bottom: 26px;
+
+        font-size: 14px;
+    }
+
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+
+    .dropdown-button {
+        min-height: 52px;
+
+        font-size: 15px;
+    }
+
+
+    .dropdown-menu {
+        max-height: 330px;
+    }
+
+
+    .dropdown-options {
+        max-height: 210px;
+    }
+
+
+    .dropdown-search-box input {
+        font-size: 16px;
+    }
+
+
+    #downloadButton {
+        min-height: 52px;
+
+        font-size: 16px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL SCREENS
+===================================================== */
+
+@media (max-width: 360px) {
+
+    .container {
+        padding:
+            28px
+            15px;
+    }
+
+
+    h1 {
+        font-size: 21px;
+    }
+
+
+    .selected-info p {
+        display: block;
+    }
+
+
+    .selected-info strong {
+        display: block;
+
+        margin-bottom: 2px;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
