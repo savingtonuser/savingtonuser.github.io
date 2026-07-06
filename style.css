@@ -1084,10 +1084,10 @@ label {
     display: block;
 
     width: auto;
-    max-width: min(100%, 500px);
+    max-width: min(100%, 400px);
 
     height: auto;
-    max-height: 120px;
+    max-height: 90px;
 
     object-fit: contain;
 }
