@@ -282,7 +282,12 @@ const tpas = [
     {
     name: "Al Madallah Healthcare Management",
     value: "al-madallah"
-}
+   },
+
+   {
+    name: "INAYAH Network",
+    value: "inayah-network"
+   }
 
 ];
  tpas.sort((a, b) =>
@@ -574,10 +579,67 @@ const networks = [
     name: "International Network List",
     file: "MEDNET - INTERNATIONAL NETWORK LIST.xlsx",
     tpa: "mednet-uae"
+},
+// =====================================================
+// INAYAH NETWORKS
+// =====================================================
+
+{
+    name: "Platinum",
+    file: "Platinuminayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Diamond",
+    file: "Diamondinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Gold",
+    file: "Goldinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Silver",
+    file: "Silverinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Bronze",
+    file: "Bronzeinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Chrome",
+    file: "Chromeinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Chrome Lite",
+    file: "Chrome Liteinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "Sapphire",
+    file: "Sapphireinayah.xlsx",
+    tpa: "inayah-network"
+},
+
+{
+    name: "EBP",
+    file: "EBPinayah.xlsx",
+    tpa: "inayah-network"
 }
     ];
 
-
+tpas.sort((a, b) => a.name.localeCompare(b.name));
 // =====================================================
 // SELECTED VALUES
 // =====================================================
